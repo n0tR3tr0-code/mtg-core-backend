@@ -2,6 +2,7 @@ package com.mtg.mtg_core_backend.controller;
 
 import org.springframework.web.bind.annotation.*;
 import com.mtg.mtg_core_backend.dto.CardResponseDto;
+import com.mtg.mtg_core_backend.model.Card;
 import com.mtg.mtg_core_backend.service.ScryfallService;
 
 @RestController
@@ -14,7 +15,9 @@ public class CardController {
     }
 
     @GetMapping("/search/{cardName}")
-    public CardResponseDto searchCards(@PathVariable String cardName) {
-        return scryfallService.fetchPrices(cardName);
+    public Card searchCards(@PathVariable String cardName) {
+        return scryfallService.getCardData(cardName);
     }
+
+
 }
